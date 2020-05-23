@@ -1,0 +1,8 @@
+---
+- name: generate ssh key pair
+  openssh_keypair:
+    path: "~/.ssh/id_rsa_devops"
+    type: rsa
+    size: 4096
+    state: present
+    force: no
