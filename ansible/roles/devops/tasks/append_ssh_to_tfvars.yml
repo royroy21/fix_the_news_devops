@@ -1,0 +1,8 @@
+---
+- name: copy append_ssh_public_key.py to home directoy
+  synchronize:
+    src: append_ssh_public_key.py
+    dest: "{{ devops_home_directory }}"
+
+- name: run append_ssh_public_key.py
+  command: "python3 {{ devops_home_directory }}/append_ssh_public_key.py"
