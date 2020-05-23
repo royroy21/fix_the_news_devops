@@ -6,12 +6,18 @@ This appends the ssh public key that was created in a previous
 task to terraform.tfvars files for each environment.
 """
 
-TERRAFORM_SECRETS_FILE = "/code/terraform/{environment}/terraform.tfvars"
-ID_RSA_PUB = "~/.ssh/id_rsa.pub"
 ENVIRONMENTS = [
     "staging",
     "production",
 ]
+ID_RSA_PUB = "~/.ssh/id_rsa.pub"
+TERRAFORM_SECRETS_FILE = "/code/terraform/{environment}/terraform.tfvars"
+
+
+def run():
+    id_rsa_pub = get_id_rsa_pub()
+    for environment in ENVIRONMENTS:
+        append_to_file(environment, id_rsa_pub)
 
 
 def get_id_rsa_pub():
@@ -27,12 +33,6 @@ def append_to_file(environment, id_rsa_pub):
     with open(path, "a") as _file:
         print(f"Appending to {path}")
         _file.write(f'public_key = "{id_rsa_pub}"')
-
-
-def run():
-    id_rsa_pub = get_id_rsa_pub()
-    for environment in ENVIRONMENTS:
-        append_to_file(environment, id_rsa_pub)
 
 
 run()
