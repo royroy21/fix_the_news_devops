@@ -10,7 +10,7 @@ ENVIRONMENTS = [
     "staging",
     "production",
 ]
-ID_RSA_PUB = "~/.ssh/id_rsa.pub"
+ID_RSA_PUB = "home/ubuntu/.ssh/id_rsa.pub"
 TERRAFORM_SECRETS_FILE = "/code/terraform/{environment}/terraform.tfvars"
 
 
@@ -21,7 +21,8 @@ def run():
 
 
 def get_id_rsa_pub():
-    return os.popen(f"cat {ID_RSA_PUB}").read().strip(" \n")
+    with open(ID_RSA_PUB, "r") as _file:
+        return _file.read().strip("\n")
 
 
 def append_to_file(environment, id_rsa_pub):
