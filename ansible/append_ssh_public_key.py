@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 
 """
@@ -36,4 +37,5 @@ def append_to_file(environment, id_rsa_pub):
         _file.write(f'public_key = "{id_rsa_pub}"')
 
 
-run()
+if __name__ == "__main__":
+    run()
