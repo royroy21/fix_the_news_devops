@@ -11,7 +11,7 @@ ENVIRONMENTS = [
     "staging",
     "production",
 ]
-ID_RSA_PUB = "home/ubuntu/.ssh/id_rsa.pub"
+ID_RSA_PUB = "/home/ubuntu/.ssh/id_rsa.pub"
 TERRAFORM_SECRETS_FILE = "/code/terraform/{environment}/terraform.tfvars"
 
 
