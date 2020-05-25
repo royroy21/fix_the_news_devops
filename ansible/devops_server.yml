@@ -2,4 +2,5 @@
 - name: configure devops server
   hosts: devops_servers
   roles:
-    - devops
+    - provision_devops
+    - get_ssl_certificates

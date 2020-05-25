@@ -1,0 +1,17 @@
+---
+- name: get SLL certificates
+  become: yes
+  become_method: sudo
+  command: |
+    certbot certonly \
+      --dns-cloudflare \
+      --dns-cloudflare-credentials cloudflare.ini \
+      --dns-cloudflare-propagation-seconds 60 \
+      --non-interactive \
+      --agree-tos \
+      --email {{ dns_cloudflare_email }} \
+      -d fixthenews.com \
+      -d *.fixthenews.com \
+      -d *.staging.fixthenews.com
+  args:
+    chdir: "{{ cloudflare_directory }}"

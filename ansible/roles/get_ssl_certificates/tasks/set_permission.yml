@@ -1,0 +1,9 @@
+---
+- name: set /etc/letsencrypt permission so devops job can use rsync to copy certificates to environments
+  become: yes
+  become_method: sudo
+  file:
+    path: /etc/letsencrypt
+    owner: "{{ devops_user }}"
+    group: "{{ devops_user }}"
+    recurse: yes
