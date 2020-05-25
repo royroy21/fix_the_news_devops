@@ -1,0 +1,9 @@
+---
+- name: initialise terraform for environments
+  become: yes
+  become_user: "{{ devops_user }}"
+  command: terraform init
+  args:
+    chdir: "{{ project_path }}/terraform/{{ item.name }}"
+  with_items:
+    - "{{ environments }}"

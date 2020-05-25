@@ -6,6 +6,7 @@
 - import_tasks: install_aws.yml
 - import_tasks: setup_aws_credentials.yml
 - import_tasks: download_project_code.yml
+- import_tasks: initialise_terraform_for_environments.yml
 - import_tasks: copy_secrets.yml
 - import_tasks: create_ssh_key_pair.yml
 - import_tasks: append_ssh_to_tfvars.yml
